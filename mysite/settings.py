@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-
+from manage import fileSetup as ALL_DATASET_FILES
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    #'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -120,14 +120,15 @@ USE_TZ = True
 
 STATIC_URL = '/staticIndex/'
 
-# Add these new lines
+# STATIC FILES IS THE FOLDER WHERE THE READING CAN BE DONE FROM
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'staticreadonly'),
 )
+#STATIC ROOT IS THE FOLDER WHERE THE COLLECT STATIC WILL BE MOVED TO
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticwriteonly')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
+print("In Settings")
+print(ALL_DATASET_FILES())
 ALLOWED_HOSTS = ['*']
 X_FRAME_OPTIONS = '*'
 

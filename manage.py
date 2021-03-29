@@ -2,6 +2,9 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from os import listdir
+from os.path import isfile, join
+import shutil
 
 ALLOWED_HOSTS = ['*']
 def main():
@@ -16,6 +19,12 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
+def fileSetup():
+    mypath = "staticwriteonly/"
+    ronlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+    for f in ronlyfiles:
+        shutil.copy("staticwriteonly/"+f, 'staticreadonly/')
+    return ronlyfiles
 
 if __name__ == '__main__':
     main()

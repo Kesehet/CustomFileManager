@@ -12,8 +12,9 @@ def renderPage(request):
   # print(dataset)
   
   s = StaticFilesStorage()
-  print(s)
+  
   mlist = list(get_files(s, location=''))
+  print(mlist)
   data = {"list":mlist}
   return render(request,'index.html',data)
   
