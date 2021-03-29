@@ -1,21 +1,19 @@
 from django.shortcuts import render
 #from . import filehandler as fh
 # Create your views here.
-from os import listdir
-from os.path import isfile, join
-
-from django.contrib.staticfiles.utils import get_files
-from django.contrib.staticfiles.storage import StaticFilesStorage
-
+from mysite.settings import GET_DATASET as DataSet
 def renderPage(request):
-  # dataset= getAllFileData()
-  # print(dataset)
-  
-  s = StaticFilesStorage()
-  
-  mlist = list(get_files(s, location=''))
-  print(mlist)
+  mlist = []
+  startIndex = 0
+  endIndex = len(DataSet)
+
+   
+  for i in range(startIndex,endIndex):
+    mlist.append(DataSet[i])
+
+
   data = {"list":mlist}
+
   return render(request,'index.html',data)
   
 

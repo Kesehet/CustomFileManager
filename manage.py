@@ -5,6 +5,7 @@ import sys
 from os import listdir
 from os.path import isfile, join
 import shutil
+from datetime import datetime
 
 ALLOWED_HOSTS = ['*']
 def main():
@@ -22,9 +23,28 @@ def main():
 def fileSetup():
     mypath = "staticwriteonly/"
     ronlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+    returner = []
     for f in ronlyfiles:
         shutil.copy("staticwriteonly/"+f, 'staticreadonly/')
-    return ronlyfiles
+        created= datetime.fromtimestamp( os.stat("staticwriteonly/"+f).st_ctime)
+
+        returner += [{"name":f,"date_create":str(created), }]
+    return returner
+
+import threading
+
+def set_interval(func, sec):
+    def func_wrapper():
+        set_interval(func, sec)
+        func()
+    t = threading.Timer(sec, func_wrapper)
+    t.start()
+    return t
+
+
+
 
 if __name__ == '__main__':
+    set_interval(fileSetup,15)
     main()
+    

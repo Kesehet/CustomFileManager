@@ -7,37 +7,42 @@
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
-  {% load static %}
-  {% for i in list %}
-  <a href="{% static i %}">{{ i }}</a>
-  {% endfor %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+{% load static %}
   <div class="w3-container">
-    <h5>Countries</h5>
-    <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
-      <tr>
-        <th>United States</th>
-        <th>65%</th>
-      </tr>
-      <tr>
-        <td>UK</td>
-        <td>15.7%</td>
-      </tr>
-      <tr>
-        <td>Russia</td>
-        <td>5.6%</td>
-      </tr>
-      <tr>
-        <td>Spain</td>
-        <td>2.1%</td>
-      </tr>
-      <tr>
-        <td>India</td>
-        <td>1.9%</td>
-      </tr>
-      <tr>
-        <td>France</td>
-        <td>1.5%</td>
-      </tr>
-    </table><br>
-    <button class="w3-button w3-dark-grey">More Countries  <i class="fa fa-arrow-right"></i></button>
+    <h5>File In Records</h5>
+    <table id="myTable" class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+        <thead>
+            <tr >
+                <th>Name</th>
+                <th>Date Created</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for i in list %}
+            <tr onclick= "window.location.href='{% static i.name %}';">
+                <td>{{ i.name }} </td>
+                <td>{{i.date_create}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+</table>
+
+
+<br>
   </div>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+    <script
+  src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"
+  crossorigin="anonymous"></script>
+ 
+
+  <script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+    </script>
