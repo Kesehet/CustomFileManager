@@ -2,7 +2,7 @@
 
 - Fork this repo to get started
 - Simply hit run to start the server
-- 
+ 
 ## First Run
 
 1. Ensure that there is a temp folder in the main directory
@@ -15,7 +15,7 @@
 xyz.com/create_file
 ```
   and save the id to be able to download it back from the server.
--To download a file, visit 
+- To download a file, visit 
 ```
 xyz.com/download/[ID_OF_THE_FILE]
 ```
