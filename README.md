@@ -20,7 +20,7 @@ xyz.com/create_file
 xyz.com/download/[ID_OF_THE_FILE]
 ```
 - This app doesnt use authentication at the time of writing. (basic authentication will be added soon.)
-- 
+  
 ## Making App.db file
 open CMD and simply write
 ```
